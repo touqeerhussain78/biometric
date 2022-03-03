@@ -27,7 +27,7 @@ $pg = 'Courses';
                         <div class="grey-bg mt-3 py-3 px-4">
                             <p class="font-20 d-grey-text mb-0 font-brinnan-regular">Users:</p>
                             <p class="font-14 d-flex align-items-center mb-0 grey-text">
-                             
+
                             </p>
                             {{-- <p class="font-14 d-flex align-items-center mb-0 grey-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="13" height="13" viewBox="0 0 13 13">

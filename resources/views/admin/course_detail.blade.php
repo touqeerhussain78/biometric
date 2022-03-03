@@ -17,7 +17,7 @@ $pg = 'Courses';
                                 @if(isset($course_record))                                        
                                 <a href="{{route('announcments',['id'=>$course_record->id])}}"  class="site-btn px-3 mt-md-0 mr-2 mt-3 py-2" >Announcements</a>
                                 @endif
-                                <a class="site-btn px-4 mt-md-0 mr-2 mt-3 py-2" href="{{route('go_live')}}">
+                                {{-- <a class="site-btn px-4 mt-md-0 mr-2 mt-3 py-2" href="{{route('go_live')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="17.909" viewBox="0 0 27 17.909">
                                         <g id="Group_403" data-name="Group 403" transform="translate(-1220 -122)">
                                             <path id="Path_94" data-name="Path 94" d="M31.955,10.5,24,16.182l7.955,5.682Z" transform="translate(1214.045 114.773)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
@@ -25,7 +25,7 @@ $pg = 'Courses';
                                         </g>
                                     </svg>
                                    Go Live
-                                </a>
+                                </a> --}}
                                 <button class="site-btn px-5 mt-md-0 mt-3 py-2" data-target=".updateStatus" data-toggle="modal">Update</button>
                             </div>
                         </div>
@@ -44,8 +44,8 @@ $pg = 'Courses';
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <h4 class="font-26 color-pink font-brinnan-bold mb-2">Course abc</h4>
                                 <div class="mb-2">
-                                    <a href="#_" class="font-14 color-pink d-block" data-toggle="modal" data-target=".enrollmentForm">Enrollment Form</a>
-                                    <a href="#_" class="font-14 color-pink d-block" data-toggle="modal" data-target=".courseFeedback">Course Feedback</a>
+                                    {{-- <a href="#_" class="font-14 color-pink d-block" data-toggle="modal" data-target=".enrollmentForm">Enrollment Form</a>
+                                    <a href="#_" class="font-14 color-pink d-block" data-toggle="modal" data-target=".courseFeedback">Course Feedback</a> --}}
                                 </div>
                             </div>
                             <p class="font-20 d-grey-text">Description:</p>
@@ -84,7 +84,7 @@ $pg = 'Courses';
                                 <div class="d-md-flex align-items-center justify-content-between">
                                     <div class="d-sm-flex align-items-center">
                                         <p class="font-18 mt-2 mb-0 d-grey-text mr-sm-5">Total Enrollments:</p>
-                                        <p class="font-14 mt-2 mb-0 d-grey-text">123</p>
+                                        {{-- <p class="font-14 mt-2 mb-0 d-grey-text">123</p> --}}
                                     </div>
                                     <a href="#_" class="d-block mt-2 font-14 color-pink" data-target=".enrolledUsers" data-toggle="modal">View All</a>
                                 </div>
@@ -99,7 +99,7 @@ $pg = 'Courses';
                                 <div class="d-md-flex align-items-center justify-content-between">
                                     <div class="d-sm-flex align-items-center">
                                         <p class="font-18 mt-2 mb-0 d-grey-text mr-sm-5">Total Previous Batches:</p>
-                                        <p class="font-14 mt-2 mb-0 d-grey-text">12</p>
+                                        {{-- <p class="font-14 mt-2 mb-0 d-grey-text">12</p> --}}
                                     </div>
                                     <a href="#_" class="d-block mt-2 font-14 color-pink" data-toggle="modal" data-target=".enrolledBatches">View All</a>
                                 </div>
@@ -295,7 +295,87 @@ $pg = 'Courses';
                             </tr>
                         </thead>
                         <tbody>
+                            @if(isset($course_record->course_enroll))
+                            @foreach ($course_record->course_enroll as $item)
                             <tr>
+                                <td>
+                                    <div class="media align-items-center">
+                                        {{-- <img src="{{asset('images')}}/{{$course_record->course_image}}"  alt="" class="img-fluid"> --}}
+                                        @if(isset($item->user->image))                                        
+                                        <img src="{{asset('images')}}/{{$item->user->image}}" alt="" class="img-fluid table-img">
+                                        @endif
+                                        <div class="media-body ml-3 text-left">
+                                            {{-- <p class="font-14 mb-0 grey-text">{{$item->user->first_name}}</p> --}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{$item->user->first_name}}</td>
+                                <td>{{$item->created_at->format('m-y-d')}}</td>
+                                {{-- <td>
+                                    <div class="btn-group dropleft custom-dropdown ml-2 mb-1">
+                                        <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
+                                        <div class="dropdown-menu custom-dropdown-menu">
+                                            <span class="triangle"></span>
+                                            <a href="#_" class="dropdown-item">
+                                                <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="13.743" height="10.538" viewBox="0 0 13.743 10.538">
+                                                    <g id="stack-of-square-papers" transform="translate(0 -35.441)">
+                                                        <g id="Group_116" data-name="Group 116" transform="translate(0 35.441)">
+                                                        <path id="Path_83" data-name="Path 83" d="M.223,38.618,6.728,41.4a.359.359,0,0,0,.144.03.369.369,0,0,0,.144-.03l6.5-2.784a.366.366,0,0,0-.014-.679L7,35.465a.365.365,0,0,0-.26,0l-6.5,2.474a.366.366,0,0,0-.014.679ZM6.872,36.2,12.4,38.3,6.872,40.667,1.344,38.3Z" transform="translate(0 -35.441)" fill="#666"/>
+                                                        <path id="Path_84" data-name="Path 84" d="M.223,125.894l6.649,2.846,6.649-2.846a.366.366,0,0,0-.288-.674l-6.361,2.723L.511,125.22a.366.366,0,1,0-.288.674Z" transform="translate(-0.001 -121.132)" fill="#666"/>
+                                                        <path id="Path_85" data-name="Path 85" d="M.223,158.292l6.649,2.846,6.649-2.846a.366.366,0,1,0-.288-.673l-6.361,2.723L.511,157.619a.366.366,0,1,0-.288.673Z" transform="translate(-0.001 -152.066)" fill="#666"/>
+                                                        <path id="Path_86" data-name="Path 86" d="M.223,190.7l6.649,2.846,6.649-2.846a.366.366,0,0,0-.288-.673l-6.361,2.723L.511,190.023a.366.366,0,1,0-.288.673Z" transform="translate(-0.001 -183.004)" fill="#666"/>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            View Details</a>
+                                            <a href="#_" class="dropdown-item" data-toggle="modal" data-target=".enrollmentForm" data-dismiss="modal" aria-label="Close">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="10.265" height="12.451" viewBox="0 0 10.265 12.451">
+                                                    <g id="forms" transform="translate(-44.944)">
+                                                        <g id="Group_173" data-name="Group 173" transform="translate(44.944)">
+                                                        <g id="Group_172" data-name="Group 172" transform="translate(0)">
+                                                            <path id="Path_96" data-name="Path 96" d="M55.135,3.085,52.124.074A.254.254,0,0,0,51.944,0H46.179a1.236,1.236,0,0,0-1.235,1.235v9.981a1.236,1.236,0,0,0,1.235,1.235h7.8a1.236,1.236,0,0,0,1.235-1.235V3.265A.254.254,0,0,0,55.135,3.085ZM52.2.868l2.143,2.143H52.925a.727.727,0,0,1-.727-.727Zm2.5,10.349a.728.728,0,0,1-.727.727h-7.8a.728.728,0,0,1-.727-.727V1.235a.728.728,0,0,1,.727-.727H51.69V2.284a1.235,1.235,0,0,0,1.235,1.235H54.7v7.7Z" transform="translate(-44.944 0)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_175" data-name="Group 175" transform="translate(47.077 7.387)">
+                                                        <g id="Group_174" data-name="Group 174" transform="translate(0)">
+                                                            <path id="Path_97" data-name="Path 97" d="M133.03,303.745h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -303.745)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_177" data-name="Group 177" transform="translate(48.013 7.387)">
+                                                        <g id="Group_176" data-name="Group 176" transform="translate(0)">
+                                                            <path id="Path_98" data-name="Path 98" d="M175.953,303.745H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -303.745)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_179" data-name="Group 179" transform="translate(47.077 6.226)">
+                                                        <g id="Group_178" data-name="Group 178" transform="translate(0)">
+                                                            <path id="Path_99" data-name="Path 99" d="M133.03,256h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -256)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_181" data-name="Group 181" transform="translate(48.013 6.226)">
+                                                        <g id="Group_180" data-name="Group 180" transform="translate(0)">
+                                                            <path id="Path_100" data-name="Path 100" d="M175.953,256H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -256)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_183" data-name="Group 183" transform="translate(47.077 5.065)">
+                                                        <g id="Group_182" data-name="Group 182" transform="translate(0)">
+                                                            <path id="Path_101" data-name="Path 101" d="M133.03,208.255h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -208.255)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_185" data-name="Group 185" transform="translate(48.013 5.065)">
+                                                        <g id="Group_184" data-name="Group 184" transform="translate(0)">
+                                                            <path id="Path_102" data-name="Path 102" d="M175.953,208.255H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -208.255)" fill="#a1a2a2"/>
+                                                        </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            View Form</a>
+                                        </div>
+                                    </div>
+                                </td> --}}
+                            </tr>
+                            @endforeach
+                            @endif
+                            {{-- <tr>
                                 <td>
                                     <div class="media align-items-center">
                                         <img src="assets/images/table-img.png" alt="" class="img-fluid table-img">
@@ -366,79 +446,7 @@ $pg = 'Courses';
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media align-items-center">
-                                        <img src="assets/images/table-img.png" alt="" class="img-fluid table-img">
-                                        <div class="media-body ml-3 text-left">
-                                            <p class="font-14 mb-0 grey-text">Mark Jack</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>mm/dd/yyyy</td>
-                                <td>
-                                    <div class="btn-group dropleft custom-dropdown ml-2 mb-1">
-                                        <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
-                                        <div class="dropdown-menu custom-dropdown-menu">
-                                            <span class="triangle"></span>
-                                            <a href="#_" class="dropdown-item">
-                                                <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="13.743" height="10.538" viewBox="0 0 13.743 10.538">
-                                                    <g id="stack-of-square-papers" transform="translate(0 -35.441)">
-                                                        <g id="Group_116" data-name="Group 116" transform="translate(0 35.441)">
-                                                        <path id="Path_83" data-name="Path 83" d="M.223,38.618,6.728,41.4a.359.359,0,0,0,.144.03.369.369,0,0,0,.144-.03l6.5-2.784a.366.366,0,0,0-.014-.679L7,35.465a.365.365,0,0,0-.26,0l-6.5,2.474a.366.366,0,0,0-.014.679ZM6.872,36.2,12.4,38.3,6.872,40.667,1.344,38.3Z" transform="translate(0 -35.441)" fill="#666"/>
-                                                        <path id="Path_84" data-name="Path 84" d="M.223,125.894l6.649,2.846,6.649-2.846a.366.366,0,0,0-.288-.674l-6.361,2.723L.511,125.22a.366.366,0,1,0-.288.674Z" transform="translate(-0.001 -121.132)" fill="#666"/>
-                                                        <path id="Path_85" data-name="Path 85" d="M.223,158.292l6.649,2.846,6.649-2.846a.366.366,0,1,0-.288-.673l-6.361,2.723L.511,157.619a.366.366,0,1,0-.288.673Z" transform="translate(-0.001 -152.066)" fill="#666"/>
-                                                        <path id="Path_86" data-name="Path 86" d="M.223,190.7l6.649,2.846,6.649-2.846a.366.366,0,0,0-.288-.673l-6.361,2.723L.511,190.023a.366.366,0,1,0-.288.673Z" transform="translate(-0.001 -183.004)" fill="#666"/>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                            View Details</a>
-                                            <a href="#_" class="dropdown-item" data-toggle="modal" data-target=".enrollmentForm" data-dismiss="modal" aria-label="Close">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10.265" height="12.451" viewBox="0 0 10.265 12.451">
-                                                    <g id="forms" transform="translate(-44.944)">
-                                                        <g id="Group_173" data-name="Group 173" transform="translate(44.944)">
-                                                        <g id="Group_172" data-name="Group 172" transform="translate(0)">
-                                                            <path id="Path_96" data-name="Path 96" d="M55.135,3.085,52.124.074A.254.254,0,0,0,51.944,0H46.179a1.236,1.236,0,0,0-1.235,1.235v9.981a1.236,1.236,0,0,0,1.235,1.235h7.8a1.236,1.236,0,0,0,1.235-1.235V3.265A.254.254,0,0,0,55.135,3.085ZM52.2.868l2.143,2.143H52.925a.727.727,0,0,1-.727-.727Zm2.5,10.349a.728.728,0,0,1-.727.727h-7.8a.728.728,0,0,1-.727-.727V1.235a.728.728,0,0,1,.727-.727H51.69V2.284a1.235,1.235,0,0,0,1.235,1.235H54.7v7.7Z" transform="translate(-44.944 0)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_175" data-name="Group 175" transform="translate(47.077 7.387)">
-                                                        <g id="Group_174" data-name="Group 174" transform="translate(0)">
-                                                            <path id="Path_97" data-name="Path 97" d="M133.03,303.745h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -303.745)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_177" data-name="Group 177" transform="translate(48.013 7.387)">
-                                                        <g id="Group_176" data-name="Group 176" transform="translate(0)">
-                                                            <path id="Path_98" data-name="Path 98" d="M175.953,303.745H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -303.745)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_179" data-name="Group 179" transform="translate(47.077 6.226)">
-                                                        <g id="Group_178" data-name="Group 178" transform="translate(0)">
-                                                            <path id="Path_99" data-name="Path 99" d="M133.03,256h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -256)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_181" data-name="Group 181" transform="translate(48.013 6.226)">
-                                                        <g id="Group_180" data-name="Group 180" transform="translate(0)">
-                                                            <path id="Path_100" data-name="Path 100" d="M175.953,256H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -256)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_183" data-name="Group 183" transform="translate(47.077 5.065)">
-                                                        <g id="Group_182" data-name="Group 182" transform="translate(0)">
-                                                            <path id="Path_101" data-name="Path 101" d="M133.03,208.255h-.114a.254.254,0,1,0,0,.508h.114a.254.254,0,1,0,0-.508Z" transform="translate(-132.662 -208.255)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                        <g id="Group_185" data-name="Group 185" transform="translate(48.013 5.065)">
-                                                        <g id="Group_184" data-name="Group 184" transform="translate(0)">
-                                                            <path id="Path_102" data-name="Path 102" d="M175.953,208.255H171.4a.254.254,0,0,0,0,.508h4.555a.254.254,0,0,0,0-.508Z" transform="translate(-171.144 -208.255)" fill="#a1a2a2"/>
-                                                        </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                            View Form</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
@@ -459,28 +467,32 @@ $pg = 'Courses';
                     <table>
                         <thead>
                             <tr>
-                                <th>S.No</th>
-                                <th>Total Enrollments</th>
+                                {{-- <th>S.No</th>
+                                <th>Total Enrollments</th> --}}
                                 <th>From</th>
                                 <th>To</th>
-                                <th>Actions</th>
+                                {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
+                            @if(isset($course_record->course_enroll))
+                            {{-- @foreach ($course_record as $item) --}}
+                                
                             <tr>
+                                {{-- <td>01</td> --}}
+                                <td>{{$course_record->enrollment_from}}</td>
+                                <td>{{$course_record->enrollment_to}}</td>
+                                {{-- <td><a href="#_" class="color-pink">View Users</a></td> --}}
+                            </tr>
+                            {{-- @endforeach --}}
+                            @endif
+                            {{-- <tr>
                                 <td>01</td>
                                 <td>123</td>
                                 <td>mm/dd/yyyy</td>
                                 <td>mm/dd/yyyy</td>
                                 <td><a href="#_" class="color-pink">View Users</a></td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>123</td>
-                                <td>mm/dd/yyyy</td>
-                                <td>mm/dd/yyyy</td>
-                                <td><a href="#_" class="color-pink">View Users</a></td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
@@ -802,7 +814,7 @@ $.ajaxSetup({
         confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
         $.ajax({
-            url: "/media_delete",
+            url: "{{route('media_delete')}}",
             type: "POST",
             data:{ 
                 _token:'{{ csrf_token() }}',

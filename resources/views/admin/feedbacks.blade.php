@@ -280,7 +280,7 @@ $.ajaxSetup({
         confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
         $.ajax({
-            url: "/feedback_delete",
+            url: "{{route('feedback_delete')}}",
             type: "POST",
             data:{ 
                 _token:'{{ csrf_token() }}',

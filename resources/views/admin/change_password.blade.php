@@ -31,15 +31,16 @@ $pg = 'Notifications';
                             <div class="form-field mb-4 mt-3">
                                 <label for="" class="custom-label font-20 font-brinnan-regular color-dark-33 ml-3">Current Password <span class="color-red">*</span> </label>
                                 <div class="password-field">
-                                    <input type="password" name="current_password" class="custom-input green-input password1 font-16 font-brinnan-light color-dark-66" placeholder="Enter Current Password">
-                                    <i class="far grey-text fa-eye-slash show-hide-icon"></i>
+                                    <input type="password" name="current_password" id="myInput1"  class="custom-input green-input  font-16 font-brinnan-light color-dark-66" placeholder="Enter Current Password">
+                                    <i onclick="myFunction1()" class="far grey-text fa-eye-slash show-hide-icon"></i>
                                 </div>
                             </div>
                             <div class="form-field mb-4">
                                 <label for="" class="custom-label font-20 font-brinnan-regular color-dark-33 ml-3">New Password <span class="color-red">*</span> </label>
                                 <div class="password-field">
-                                    <input type="password"  name="new_password" class="custom-input green-input password1 font-16 font-brinnan-light color-dark-66" placeholder="Enter New Password">
-                                    <i class="far grey-text fa-eye-slash show-hide-icon"></i>
+                                    <input type="password" id="myInput"  name="new_password" class="custom-input green-input  font-16 font-brinnan-light color-dark-66" placeholder="Enter New Password"
+                                    >
+                                    <i onclick="myFunction()" class="far grey-text fa-eye-slash show-hide-icon"></i>
                                 </div>
                             </div>
                             {{-- <div class="form-field mb-4">
@@ -59,7 +60,7 @@ $pg = 'Notifications';
     </div>
 </div>
 
-<div class="modal fade passwordUpdated" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade passwordUpdated" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -82,6 +83,25 @@ $pg = 'Notifications';
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function myFunction1() {
+  var x = document.getElementById("myInput1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 @endsection
-{{-- <?php include('footer.php'); ?> --}}

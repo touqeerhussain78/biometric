@@ -303,7 +303,7 @@ $pg="";
             </g>
           </svg><span>Blogs</span></a>
       </li>
-      <li class="nav-item <?php if ($pg == "content_management") {
+      {{-- <li class="nav-item <?php if ($pg == "content_management") {
                             echo "active";
                           } ?>">
         <a class="navbar-links" href="{{route('content_management')}}">
@@ -328,7 +328,7 @@ $pg="";
               </g>
             </g>
           </svg><span>Content Management</span></a>
-      </li>
+      </li> --}}
       <li class="nav-item <?php if ($pg == "payments") {
                             echo "active";
                           } ?>">

@@ -14,7 +14,7 @@ $pg = 'Users';
                     <div class="col-md-6">
                         <h4 class="font-30 color-dark-33 font-brinnan-bold mb-0">User</h4>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end align-items-end">
+                    {{-- <div class="col-md-6 d-flex justify-content-end align-items-end">
                         <div class="text-field width-260 mr-5">
                             <input type="text" placeholder="Search here..." class="w-100">
                         </div>
@@ -26,7 +26,7 @@ $pg = 'Users';
                                 <option>14</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="grey-bg">
@@ -82,7 +82,7 @@ $pg = 'Users';
                                     <tr>
                                         <td>{{$i++}}</td>
                                         <td>{{$item->first_name}} </td>
-                                        <td>{{$item->first_name}}</td>
+                                        <td>{{$item->last_name}}</td>
                                         <td>{{$item->created_at->format('m/d/Y') }}</td>
                                         <td>{{$item->email}}</td>
                                         @if($item->status=='1')
@@ -141,7 +141,7 @@ $pg = 'Users';
                                     <tr>
                                         <td>{{$i++}}</td>
                                         <td>{{$item->first_name}} </td>
-                                        <td>{{$item->first_name}}</td>
+                                        <td>{{$item->last_name}}</td>
                                         <td>{{$item->created_at->format('m/d/Y') }}</td>
                                         <td>{{$item->email}}</td>
                                         @if($item->status=='1')
@@ -313,7 +313,7 @@ $.ajaxSetup({
         }).then((result) => {
 
         $.ajax({
-            url: "/user_status",
+            url: "{{route('user_status')}}",
             type: "POST",
             data:{ 
                 _token:'{{ csrf_token() }}',

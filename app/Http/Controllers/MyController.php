@@ -154,6 +154,11 @@ class MyController extends Controller
         $course_enroll = UserEnroll::distinct()->count('course_id');
         $payment = PaymentLog::sum('cost');
         $course_enroll = UserEnroll::distinct()->get(['course_id'])->count();
+        $month =  PaymentLog::whereMonth('created_at', Carbon::now()->month)->first();
+        $month_sum =  PaymentLog::whereMonth('created_at', Carbon::now()->month)->sum('cost');
+        $data = [];
+        $data['label'][] = Carbon::parse($month->created_at)->format('M');
+        $data['data'][] = (int) $month_sum;
         // $total_user_enroll = UserEnroll::distinct()->get(['user_id'])->count();
         $start_date = $request->start_date;
         $end_date = $request->end_date;
@@ -162,6 +167,7 @@ class MyController extends Controller
             'course_enroll' => $course_enroll,
             'payment' => $payment,
             'course_enroll' => $course_enroll,
+            'chart_data'    => json_encode($data)
             // 'total_user_enroll' => $total_user_enroll,
         );
         $payment_filter = PaymentLog::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
@@ -330,9 +336,9 @@ class MyController extends Controller
 
     public function update_profile (Request $request){
      
-        $request->validate([
-            'my_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // $request->validate([
+        //     'my_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
        
 
@@ -625,8 +631,8 @@ class MyController extends Controller
 
     public function course_detail($id)
     {
-
-        $course_record = Courses::with('course_objective','question')->where('id',$id)->first();        
+        
+        $course_record = Courses::with('course_enroll.user','course_objective','question')->where('id',$id)->first();        
         $course_media = CourseMedia::where('course_id',$id)->get();
         $data = array(
             'id' => $id
@@ -881,8 +887,8 @@ class MyController extends Controller
         {
             $user->status = $status;
             $user->save();
-            return response()->json('Done');
         }
+        return response()->json('Done');
     }
 
     public function media_add($id)
