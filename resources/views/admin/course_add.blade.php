@@ -113,20 +113,11 @@ $pg = 'Users';
                     <label for="" class="custom-label text-left font-16 font-brinnan-regular mt-3 color-dark-33 ml-3">Question :</label>
                     <div class="d-flex align-items-center">
                         <input type="text" name="question[]" class="custom-input green-input h-auto py-2" placeholder="Enter Question">
-                        <div id="another_question">
-                        </div>
                         <input type="button" id="add_another_question" value="Add Another" class="transparent-btn ml-3">
-                        {{-- <button class="transparent-btn ml-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20.034" height="24.667" viewBox="0 0 20.034 24.667">
-                                <g id="delete" transform="translate(0.003 0.002)">
-                                    <path id="Path_89" data-name="Path 89" d="M222.976,154.7a.578.578,0,0,0-.578.578V166.2a.578.578,0,0,0,1.155,0V155.281A.578.578,0,0,0,222.976,154.7Zm0,0" transform="translate(-209.554 -145.768)" fill="#002a36"/>
-                                    <path id="Path_90" data-name="Path 90" d="M104.976,154.7a.578.578,0,0,0-.578.578V166.2a.578.578,0,0,0,1.155,0V155.281A.578.578,0,0,0,104.976,154.7Zm0,0" transform="translate(-98.37 -145.768)" fill="#002a36"/>
-                                    <path id="Path_91" data-name="Path 91" d="M1.637,7.342V21.575a3.187,3.187,0,0,0,.847,2.2,2.845,2.845,0,0,0,2.064.892h10.93a2.844,2.844,0,0,0,2.064-.892,3.187,3.187,0,0,0,.847-2.2V7.342A2.207,2.207,0,0,0,17.824,3H14.866V2.28A2.269,2.269,0,0,0,12.578,0H7.449A2.269,2.269,0,0,0,5.161,2.28V3H2.2a2.207,2.207,0,0,0-.566,4.34ZM15.479,23.51H4.549a1.83,1.83,0,0,1-1.756-1.935V7.393H17.235V21.575a1.83,1.83,0,0,1-1.756,1.935ZM6.317,2.28A1.113,1.113,0,0,1,7.449,1.154h5.13A1.113,1.113,0,0,1,13.711,2.28V3H6.317ZM2.2,4.158h15.62a1.04,1.04,0,0,1,0,2.08H2.2a1.04,1.04,0,0,1,0-2.08Zm0,0" transform="translate(0 0)" fill="#002a36"/>
-                                    <path id="Path_92" data-name="Path 92" d="M163.976,154.7a.578.578,0,0,0-.578.578V166.2a.578.578,0,0,0,1.155,0V155.281A.578.578,0,0,0,163.976,154.7Zm0,0" transform="translate(-153.962 -145.768)" fill="#002a36"/>
-                                </g>
-                            </svg>
-                        </button> --}}
                     </div>
+                    <div id="another_question">
+                    </div>
+                    
                     {{-- <div class="text-right">
                         <button class="color-pink transparent-btn mt-2 font-16">Add Another Question</button>
                     </div> --}}
@@ -148,7 +139,8 @@ $pg = 'Users';
     });
 
     $("#add_another_question").click(function(){
-    $("#another_question").append("<br><br><input type='text' name='question[]' class='custom-input green-input h-auto py-2' placeholder='Enter Question'>");
+    $("#another_question").append("<br><div class='d-flex align-items-center'><input type='text' name='question[]' class='custom-input green-input h-auto py-2' placeholder='Enter Question'><div id='another_question'></div><input type='button' id='add_another_question' value='Add Another' class='transparent-btn ml-3'></div>");
+    // <br><br><input type='text'    name='question[]' class='custom-input green-input h-auto py-2' placeholder='Enter Question'>
     });
     
 

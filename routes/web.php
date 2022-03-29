@@ -23,6 +23,8 @@ Auth::routes([
     'register' => false,
     'login' => true,
 ]);
+
+
 Route::get('/', [App\Http\Controllers\MyController::class, 'my_login'])->name('login');
 Route::get('/password_recovery', [App\Http\Controllers\MyController::class, 'password_recovery'])->name('password_recovery');
 // Route::get('/login', [App\Http\Controllers\HomeController::class, 'my_login'])->name('login');

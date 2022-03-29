@@ -17,6 +17,8 @@ class CreateCourseMediaTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->integer('category_id')->nullable();
+            $table->integer('estimate_time')->nullable();
             $table->text('media')->nullable();
             $table->string('type')->nullable();
             $table->integer('course_id')->nullable();

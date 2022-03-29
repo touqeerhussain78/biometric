@@ -5,7 +5,7 @@ $pg="";
   <div class="top-nav-bar">
     <ul id="sidebar-logo">
       <li class="navbar-logo">
-        <a href="{{route('dashboard')}}" class="navbar-logo-img"> <img src="assets/images/fav-icon.png"> </a>
+        <a href="{{route('dashboard')}}" class="navbar-logo-img"> <img src="{{asset('assets/images/fav-icon.png')}}"> </a>
       </li>
     </ul>
     <div class="top-nav-bar-inner">
@@ -79,7 +79,7 @@ $pg="";
 
             <div class="dropdown">
               <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="assets/images/profile-dropdown.png" alt="">
+                <img src="{{asset('images')}}/{{Auth::user()->image}}" alt="">
                 <div class="text">
                 {{-- {{ Auth::user()->name }} --}}
                 Marry <span>Admin</span>

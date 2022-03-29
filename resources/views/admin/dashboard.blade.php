@@ -56,7 +56,7 @@
                         <h4 class="font-24 color-dark-33 font-brinnan-regular mb-0">Amount Analytics</h4>
                     </div>
                     <div class="col-md-6 text-right">
-                     <select name="year" id="selectYear">
+                    <select name="year" id="selectYear">
                         <option value="">Select year</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
@@ -77,8 +77,6 @@
                                     <canvas id="pie-chart"></canvas>
                                     </div>
                                 </div>
-                                {{-- <div id="mychart"></div> --}}
-                                {{-- <div id="bars_basic" class="height-400 echart-container"></div> --}}
                             </div>
                         </div>
                     </div>
