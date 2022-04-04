@@ -9,7 +9,7 @@ class Courses extends Model
 {
     use HasFactory;
 
-
+    protected $appends = ['avg_rating'];
     /**
      * Get the user associated with the Courses
      *
@@ -30,6 +30,17 @@ class Courses extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+
+    public function getCourseImageAttribute($value){
+
+        return asset("/images/{$value}");
+    }
+
+    public function course_media(){
+
+        return $this->hasMany(CourseMedia::class,'course_id');
+    }
+
     public function course_enroll()
     {
         return $this->hasMany(UserEnroll::class, 'course_id', 'id');
@@ -44,5 +55,27 @@ class Courses extends Model
     {
         return $this->hasMany(EnrollmentQuestion::class, 'course_id', 'id');
     }
+
+    public function announcments(){
+
+        return $this->hasMany(Announcment::class,'course_id');
+    }
+
+    public function course_enrollment()
+    {
+        return $this->belongsTo(UserCourseEnrollment::class,'id','course_id');
+    }
+
+    public function rating_review()
+    {
+        return $this->hasMany(CourseReviewRating::class,'course_id');
+    }
+
+    public function getAvgRatingAttribute($value)
+    {
+        return $this->rating_review()->avg('rating');
+    }
+
+
 
 }

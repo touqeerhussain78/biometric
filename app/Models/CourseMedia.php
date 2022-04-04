@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CourseMedia extends Model
 {
     use HasFactory;
+
+    public function getMediaAttribute($value){
+        return asset("/course_media/{$value}");
+    }
 }

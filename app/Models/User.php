@@ -6,11 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,10 @@ class User extends Authenticatable
         'email',
         'password',
         'code',
-        'status'
+        'status',
+        'age',
+        'phone_number',
+        'interset_in_course'
     ];
 
     /**
@@ -51,6 +55,12 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    
+   	
+	public function getImageAttribute($value){
+        return asset("/user/{$value}");
+    }
+
     public function user_enroll()
     {
         return $this->hasMany(UserEnroll::class, 'user_id', 'id');
@@ -61,6 +71,11 @@ class User extends Authenticatable
 
     {
         return $this->morphMany(Notification::class, 'notifiable')->whereReadAt(null)->latest();
+    }
+
+    public function course_enrollment()
+    {
+        return $this->hasOne(UserCourseEnrollment::class,'user_id');
     }
     
 }

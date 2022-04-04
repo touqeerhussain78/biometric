@@ -957,6 +957,7 @@ class MyController extends Controller
 
     public function media_update(Request $request,$id){
 
+       
         $course_media = CourseMedia::where('id', $id)->first();
         if ($request->hasFile('media')) {
             $image = $request->file('media');
