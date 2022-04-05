@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\WebinarController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,6 +50,13 @@ Route::group(['middleware' => ['json.response', 'localization']], function () {
     Route::post('registerasinterset',[UserController::class, 'registerAsInterset'])->name('registerAsInterset');
     Route::post('review',[UserController::class, 'reviewAgainestCourse'])->name('reviewAgainestCourse')->middleware('auth:api');
 
+  });
+
+
+  Route::group(['prefix'=>'webinars'],function(){
+    Route::get('index',[WebinarController::class, 'index'])->name('index');
+    Route::get('show/{id}',[WebinarController::class, 'getBlogById'])->name('getBlogById');
+    Route::post('payment',[WebinarController::class, 'makePayment'])->name('makePayment')->middleware('auth:api');
   });
 
   Route::group(['prefix'=>'blogs'],function(){

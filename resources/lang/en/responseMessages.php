@@ -105,6 +105,8 @@ return [
     'blogsFetch'                                => "Blogs fetch successfully",
     'courseInterset'                            => "Your are successfully register in this course wait for admin aproval",
     'reviewAgainestCourse'                      => "Your Feedback review submit successfully!",
+    'webinarFetch'                              => "Webinars fetch successfully!",
+    'webinarPayment'                            => "Webinars Payment made successfully!",
 
 
 

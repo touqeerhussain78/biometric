@@ -10,6 +10,7 @@ class Courses extends Model
     use HasFactory;
 
     protected $appends = ['avg_rating'];
+    protected $with = ['rating_review.user'];
     /**
      * Get the user associated with the Courses
      *
@@ -71,7 +72,7 @@ class Courses extends Model
         return $this->hasMany(CourseReviewRating::class,'course_id');
     }
 
-    public function getAvgRatingAttribute($value)
+    public function getAvgRatingAttribute()
     {
         return $this->rating_review()->avg('rating');
     }
