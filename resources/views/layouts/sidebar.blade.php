@@ -79,7 +79,7 @@ $pg="";
 
             <div class="dropdown">
               <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="{{asset('images')}}/{{Auth::user()->image}}" alt="">
+                <img src="{{Auth::user()->image}}" alt="">
                 <div class="text">
                 {{-- {{ Auth::user()->name }} --}}
                 Marry <span>Admin</span>

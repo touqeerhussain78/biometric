@@ -45,7 +45,7 @@ $pg = 'Courses';
                             @if(isset($webinar->video))               
 
                             <video controls poster="assets/images/video.png" class="w-100">
-                                <source src="{{asset('webinar/video')}}/{{$webinar->video}}" type="video/mp4">
+                                <source src="{{$webinar->video}}" type="video/mp4">
                             </video>
                                 {{-- <img src="{{asset('images')}}/{{$webinar->video}}"  alt="" class="img-fluid"> --}}
                             @endif

@@ -11,7 +11,7 @@ class BlogController extends BaseController
 {
     public function index(Request $request)
     {
-
+        
         if (request()->filled('search')) {
             $blogs = Blog::where('title', 'like', "%" . request('search') . "%")
                 ->orWhere('description', 'like', "%" . request('search') . "%");

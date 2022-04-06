@@ -22,7 +22,7 @@ $pg = 'Courses';
                     <div class="col-md-6 col-lg-4 mt-3">
                         <div class="blog-card">
                             @if(isset($blog_record->image))                                        
-                            <img src="{{asset('blog')}}/{{$blog_record->image}}"  alt="" class="img-fluid">
+                            <img src="{{$blog_record->image}}"  alt="" class="img-fluid">
                             @endif
                             <div class="blog-card-body pt-3">
                                 <h2 class="d-grey-text font-brinnan-regular font-18">{{$blog_record->title}}</h2>

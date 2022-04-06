@@ -20,6 +20,7 @@ use App\Models\Feedback;
 use App\Models\Packages;
 use App\Models\Payment;
 use App\Models\UserCourseEnrollment;
+use App\Models\UserWebinar;
 use Mockery\Undefined;
 
 class AuthController extends BaseController
@@ -240,6 +241,11 @@ class AuthController extends BaseController
         return $this->sendResponse(auth()->user(), __('responseMessages.passwordUpdated'));
     }
 
+    public function getLoginUser()
+    {
+        $user =  UserWebinar::where('user_id',auth()->user()->id)->first();
+        return $this->sendResponse($user, __('responseMessages.passwordUpdated')); 
+    }
 
     public function userProfile(Request $request)
     {   
@@ -294,6 +300,13 @@ class AuthController extends BaseController
 
     public function register(Request $request)
     {
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'email'      => 'required|unique:users|email',
+            'password'   => 'required',
+        ]);
 
         $image = null;
         if($request->image != 'undefined'){

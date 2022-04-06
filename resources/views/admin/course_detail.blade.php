@@ -35,7 +35,7 @@ $pg = 'Courses';
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 mt-3">
                         @if(isset($course_record->course_image))                                        
-                            <img src="{{asset('images')}}/{{$course_record->course_image}}"  alt="" class="img-fluid">
+                            <img src="{{$course_record->course_image}}"  alt="" class="img-fluid">
                         @endif
                         {{-- <img src="assets/images/course-img.png" alt="" class="img-fluid course-img"> --}}
                     </div>
@@ -300,9 +300,9 @@ $pg = 'Courses';
                             <tr>
                                 <td>
                                     <div class="media align-items-center">
-                                        {{-- <img src="{{asset('images')}}/{{$course_record->course_image}}"  alt="" class="img-fluid"> --}}
+                                        {{-- <img src="{{$course_record->course_image}}"  alt="" class="img-fluid"> --}}
                                         @if(isset($item->user->image))                                        
-                                        <img src="{{asset('images')}}/{{$item->user->image}}" alt="" class="img-fluid table-img">
+                                        <img src="{{$item->user->image}}" alt="" class="img-fluid table-img">
                                         @endif
                                         <div class="media-body ml-3 text-left">
                                             {{-- <p class="font-14 mb-0 grey-text">{{$item->user->first_name}}</p> --}}

@@ -17,7 +17,7 @@ $pg = 'Notifications';
                     <div class="col-xl-7 col-lg-9 my-lg-5 my-4 mx-auto">
                         <div class="profile-card px-lg-5 py-4 px-sm-4 p-3">
                             <div class="profile-pic mx-auto">
-                                <img src="assets/images/profile.png" alt="" class="img-fluid">
+                                <img src="{{Auth::user()->image}}" alt="" class="img-fluid">
                             </div>
                             <div class="text-center">
                                 <a href="{{route('change_password')}}" class="font-14 color-pink">Change Password</a>

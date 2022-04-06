@@ -354,7 +354,7 @@ class MyController extends Controller
                 $image_name = time() . '.' . $image->getClientOriginalExtension();
                 //  echo $image;
                 //  exit(0);
-                $destinationPath = base_path('public/images');
+                $destinationPath = base_path('public/user');
                 $image->move($destinationPath, $image_name);
 
                 // $imageName      = time() . '.' . $request->image;
@@ -765,6 +765,8 @@ class MyController extends Controller
     public function webinar_update(Request $request, $id)
     {
 
+       // dd($request->all());
+
         $webinar = Webinar::where('id', $id)->first();
         $webinar->title = $request->title;
         $webinar->description = $request->description;
@@ -776,9 +778,8 @@ class MyController extends Controller
             $image_name = time() . '.' . $image->getClientOriginalExtension();
             //  echo $image;
             //  exit(0);
-            $destinationPath = base_path('public/images');
-            $image->move($destinationPath, $image_name);
-
+            $destinationPath = base_path('public/webinar/video');
+            $image->move($destinationPath, $image_name);    
             // $imageName      = time() . '.' . $request->image;
             // $request->image->move(public_path('images'), $imageName);
             $webinar->video      = $image_name;

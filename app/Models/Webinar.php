@@ -9,15 +9,16 @@ class Webinar extends Model
 {
     use HasFactory;
 
-    protected $with = ['webinar_payment.user'];
+    protected $with = ['user_webinars.user'];
 
     public function getVideoAttribute($value)
     {
         return asset("/webinar/video/{$value}");
     }
 
-    public function webinar_payment()
+    public function user_webinars()
     {
-        return $this->belongsTo(WebinarPayment::class,'id','webinar_id');
+        return $this->hasOne(UserWebinar::class,'webinar_id');
     }
+
 }

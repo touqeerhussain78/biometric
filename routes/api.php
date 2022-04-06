@@ -32,7 +32,7 @@ Route::group(['middleware' => ['json.response', 'localization']], function () {
     Route::get('getUserProfile/{id}',[AuthController::class, 'getUserProfile'])->name('getUserProfile')->middleware('auth:api');
     Route::get('logout',[AuthController::class, 'logout'])->name('logout')->middleware('auth:api');
     Route::post('profile',[AuthController::class, 'AuthControllerProfile'])->name('AuthControllerProfile')->middleware('auth:api');
-    Route::get('getGraphData', [AuthController::class, 'getGraphData'])->name('getGraphData')->middleware('auth:api');
+    Route::get('getLoginUser', [AuthController::class, 'getLoginUser'])->name('getLoginUser')->middleware('auth:api');
     Route::post('AuthControllerChangePassword', [AuthController::class, 'updatePassword'])->name('updatePassword')->middleware('auth:api');
     Route::post('profile/update',[AuthController::class, 'userProfile'])->name('userProfile')->middleware('auth:api');
     Route::post('changePassword',[AuthController::class, 'changePassword'])->name('changePassword');
@@ -55,8 +55,10 @@ Route::group(['middleware' => ['json.response', 'localization']], function () {
 
   Route::group(['prefix'=>'webinars'],function(){
     Route::get('index',[WebinarController::class, 'index'])->name('index');
-    Route::get('show/{id}',[WebinarController::class, 'getBlogById'])->name('getBlogById');
+    Route::get('show/{id}',[WebinarController::class, 'getWebinarById'])->name('getWebinarById')->middleware('auth:api');
     Route::post('payment',[WebinarController::class, 'makePayment'])->name('makePayment')->middleware('auth:api');
+    Route::get('mywebinars',[WebinarController::class, 'getMyWebinars'])->name('getMyWebinars')->middleware('auth:api');
+
   });
 
   Route::group(['prefix'=>'blogs'],function(){

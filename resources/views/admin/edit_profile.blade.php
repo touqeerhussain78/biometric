@@ -20,7 +20,7 @@ $pg = 'Notifications';
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                         @endif
                         <div class="profile-pic mx-auto">
-                            <img src="{{asset('images')}}/{{Auth::user()->image}}" alt="" class="img-fluid">
+                            <img src="{{Auth::user()->image}}" alt="" class="img-fluid">
                             <label for="upload-img" class="camera-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
                                     <g id="Group_403" data-name="Group 403" transform="translate(-978 -367)">
